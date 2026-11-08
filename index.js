@@ -1,23 +1,17 @@
-const thumbnails = document.querySelectorAll('.thumbs');
-
-function thumbnailAlert(e){
-    const productId = e.target.id;
-    alert(`Product ID: ${productId}`);
-}
-
-for (let b of thumbnails){
-    b.addEventListener("click", thumbnailAlert);
-}
-
-const btns = document.querySelectorAll('td button');
-
-function buttonAlert(e){
-    const productId = e.target.id;
-    const productTitle = e.target.title;
-    alert(`Product ID: ${productId} Title: ${productTitle}`)
-}
+const btns = document.querySelectorAll('table tr td');
 
 for (let b of btns){
-    b.addEventListener("click", buttonAlert);
-}
+    const thumbnails = b.querySelector('.thumbs');
+    const productTitle = b.querySelector('p');
+    const btn = b.querySelector('button');
 
+if (thumbnails && btn){
+    thumbnails.addEventListener("click", function() {
+        alert(`Product ID: ${thumbnails.id}`);
+    });
+    
+    btn.addEventListener("click", function() {
+        alert(`Product ID: ${thumbnails.id} Title: ${productTitle.textContent}`);
+    });
+}
+}
